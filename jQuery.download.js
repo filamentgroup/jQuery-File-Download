@@ -9,7 +9,7 @@
  * --------------------------------------------------------------------
  */
  
-jQuery.download = function(url, data, method){
+jQuery.download = function(url, data, method, target){
 	//url and data options required
 	if( url && data ){ 
 		//data can be string of parameters or array/object
@@ -21,7 +21,7 @@ jQuery.download = function(url, data, method){
 			inputs+='<input type="hidden" name="'+ pair[0] +'" value="'+ pair[1] +'" />'; 
 		});
 		//send request
-		jQuery('<form action="'+ url +'" method="'+ (method||'post') +'">'+inputs+'</form>')
+		jQuery('<form action="'+ url +'" method="'+ (method||'post') +'" target="' + (target||'_self') + '">'+inputs+'</form>')
 		.appendTo('body').submit().remove();
 	};
 };
